@@ -38,3 +38,15 @@ spring:
       group-id: orders-ms
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+  datasource:
+    url: jdbc:postgresql://localhost:5438/orders_db
+    username: app_user
+    password: app_pass
+    driver: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

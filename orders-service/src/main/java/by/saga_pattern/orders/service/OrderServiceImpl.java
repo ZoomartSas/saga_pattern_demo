@@ -1,7 +1,7 @@
 package by.saga_pattern.orders.service;
 
-import by.javaguru.core.dto.Order;
-import by.javaguru.core.types.OrderStatus;
+import by.saga_pattern.core.dto.Order;
+import by.saga_pattern.core.types.OrderStatus;
 import by.saga_pattern.orders.dao.jpa.entity.OrderEntity;
 import by.saga_pattern.orders.dao.jpa.repository.OrderRepository;
 import org.springframework.stereotype.Service;

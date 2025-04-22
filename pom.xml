@@ -5,8 +5,8 @@
     <groupId>by.saga_pattern</groupId>
     <artifactId>saga-pattern-spring-boot-demo</artifactId>
     <packaging>pom</packaging>
-    <name>Saga Orchestration Pattern</name>
-    <description>Saga Orchestration Pattern </description>
+    <name>saga_orchestration_pattern</name>
+    <description>Ssaga_orchestration_pattern</description>
     <version>${revision}</version>
 
     <parent>

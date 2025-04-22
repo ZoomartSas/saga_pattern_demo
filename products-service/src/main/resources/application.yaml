@@ -54,3 +54,16 @@ spring:
           auto:
             create:
               topics: false
+
+  datasource:
+    url: jdbc:postgresql://localhost:5438/products_db
+    username: app_user
+    password: app_pass
+    driver: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

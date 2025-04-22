@@ -58,3 +58,37 @@ services:
       - 9093:9093
     volumes:
       - ../kafka-volumes/server-3:/bitnami/kafka
+
+  postgres:
+    image: postgres:15
+    container_name: shared_postgres
+    environment:
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: app_pass
+    ports:
+      - "5438:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: >
+      bash -c "
+        docker-entrypoint.sh postgres &
+        sleep 5 &&
+        psql -U $$POSTGRES_USER -d postgres -c 'CREATE DATABASE orders_db;' &&
+        psql -U $$POSTGRES_USER -d postgres -c 'CREATE DATABASE payments_db;' &&
+        psql -U $$POSTGRES_USER -d postgres -c 'CREATE DATABASE products_db;' &&
+        wait
+      "
+
+volumes:
+  pgdata:
+
+networks:
+  backend:
+    driver: bridge
